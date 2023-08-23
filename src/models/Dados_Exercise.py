@@ -1,57 +1,12 @@
 import csv
 import os.path
 from datetime import datetime, timedelta
+from ast import literal_eval
+
+from src.models.arquivo_csv import *
 
 
 cabecalho = ['Data', 'Exercicio', 'Peso', 'Repeticoes']
-
-
-# Cria o arquivo simulando alguns dados
-def criando_arquivocsv_simulando(caminho):
-    # Uma lista de simulação de dados
-    dados = [
-        ['Data', 'Exercicio', 'Peso', 'Repeticoes'],
-        ['10/08/2023', 'Supino', '40', '6'],
-        ['11/08/2023', 'Agachamento', '80', '8'],
-        ['12/08/2023', 'Rosca Direta', '20', '12'],
-        ['13/08/2023', 'Leg Press', '120', '10'],
-        ['14/08/2023', 'Desenvolvimento Ombro', '50', '8'],
-        ['15/08/2023', 'Supino', '45', '8'],
-        ['16/08/2023', 'Supino', '50', '10'],
-        ['17/08/2023', 'Agachamento', '90', '10'],
-        ['18/08/2023', 'Agachamento', '95', '12'],
-        ['19/08/2023', 'Rosca Direta', '25', '10'],
-        ['20/08/2023', 'Rosca Direta', '30', '12'],
-        ['21/08/2023', 'Leg Press', '130', '12'],
-        ['22/08/2023', 'Leg Press', '140', '15'],
-        ['23/08/2023', 'Desenvolvimento Ombro', '55', '10'],
-        ['24/08/2023', 'Desenvolvimento Ombro', '60', '12'],
-    ]
-
-    # Abri o arquivo modo escrita
-    with open(caminho, 'w', newline='') as arquivo_csv:
-        writer = csv.writer(arquivo_csv)
-
-        writer.writerow(dados[0])
-
-        writer.writerows(dados[1:])
-
-
-# Le o arquivo csv e retorna os dados lidos
-def ler_arquivo_csv(caminho):
-    # Abrindo arquivo csv
-    with open(caminho, 'r') as file:
-        # Criando um objeto leitor de CSV
-        reader = csv.reader(file)
-
-        dados_csv_ler = []
-
-        # Iterando sobre cada linha do arquivo CSV
-        for row in reader:
-            dados_csv_ler.append(row)
-
-        # Retorna lista com os dados
-        return dados_csv_ler
 
 
 # Cria uma lista so dos exercicios percorrendo a lista de dados
@@ -76,13 +31,6 @@ def dados_um_exercicio(dados_treino, exercicio):
             info_um_exerc.append(linha)
 
     return info_um_exerc
-
-
-# Funcao que inseri os dados dos exercicios no arquivo
-def inserir_dados_arq_csv(dados, caminho):
-    with open(caminho, 'w', newline='') as arquivo_csv:
-        writer = csv.writer(arquivo_csv)
-        writer.writerows(dados)
 
 
 # Organiza os dados pela data

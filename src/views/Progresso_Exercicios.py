@@ -60,9 +60,9 @@ layout = [
 
 ]
 
-window = sg.Window('Exercise-Tracker', layout)
+window = sg.Window('Exercise-Tracker', layout, size=(700,500))
 
-
+print(dados_treinos)
 def gerar_grafico(list_semana, list_peso, exerc):
     # Grafico de dispersao
     plt.figure(figsize=(10, 6))  # tamanho da figura
