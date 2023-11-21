@@ -43,13 +43,9 @@ def gerar_dados_acompanhar_macro_calistenia(lista_semanas, exerc_cal):
 
 # Gera um dicionario para acompanhar exercicios da academia (Referencia: [] Base: [] Forca: [] Shock: [])
 def gerar_dados_acompanhar_macro_gym(lista_semanas, exerc_gym):
-    # Fazendo receber quantidade de semanas
-    base, forca, shock = lista_semanas[0], lista_semanas[1], lista_semanas[2]
-
-    # Recebe ate qual semana é Ex: (4,8,12)
-    ate_base = int(base)
-    ate_forca = int(forca) + int(base)
-    ate_shock = int(shock) + ate_forca
+    # Soma total da semana
+    lista_numerica = list(map(int, lista_semanas))
+    total_semana = sum(lista_numerica)
 
     # Deleta a primeira linha que é o cabecalho sem as semanas
     del exerc_gym[0]
@@ -129,8 +125,8 @@ def criar_dados_macro(str_info, data_inicio, lista_semanas, path_micro_ciclo, pa
         'Semanas': lista_semanas,
         'Micro_Ciclo': micro_ciclo,
         'Meso_Ciclo': meso_ciclo,
-        'Dados_Calistenia': gerar_dados_acompanhar_macro_calistenia(lista_semanas, meso_ciclo[0]),
-        'Dados_Gym': gerar_dados_acompanhar_macro_gym(lista_semanas, meso_ciclo[1])
+        'Dados_Gym': gerar_dados_acompanhar_macro_calistenia(lista_semanas, meso_ciclo[0]),
+        'Dados_Calistenia': gerar_dados_acompanhar_macro_gym(lista_semanas, meso_ciclo[1])
     }
 
     return dados_macro
